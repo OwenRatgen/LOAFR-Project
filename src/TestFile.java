@@ -63,12 +63,12 @@ public class TestFile {
     // Tests the read() function in the ReadCsv Class
     @Test
     public void testSingleRead() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testSingleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testSingleCsv.csv");
         Assert.assertEquals(expectedSingleList, actualList);
     }
     @Test
     public void testMultipleRead() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testMultipleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testMultipleCsv.csv");
         Assert.assertEquals(expectedMultipleList, actualList);
     }
     @Test
@@ -87,19 +87,19 @@ public class TestFile {
     // Tests the findInstances() function in the Analyzer Class
     @Test
     public void testFindSingleInstance() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testSingleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testSingleCsv.csv");
         List<Map<String, String>> newActualList = testAnalyzer.findInstances(actualList, "Names", "Owen Ratgen");
         Assert.assertEquals(newExpectedSingleList, newActualList);
     }
     @Test
     public void testFindMultipleInstances() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testMultipleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testMultipleCsv.csv");
         List<Map<String, String>> newActualList = testAnalyzer.findInstances(actualList, "Names", "Max Percy");
         Assert.assertEquals(newExpectedMultipleList, newActualList);
     }
     @Test
     public void testFindInstancesError() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testMultipleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testMultipleCsv.csv");
         List<Map<String, String>> newActualList = testAnalyzer.findInstances(actualList, "Name", "Max Percy");
         Assert.assertEquals(newExpectedErrorList, newActualList);
     }
@@ -107,14 +107,14 @@ public class TestFile {
     // Tests the printList() function in the Output Class
     @Test
     public void testSingleOutput() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testSingleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testSingleCsv.csv");
         testPrinter.printList(actualList);
         String expectedString = "{Names=Owen Ratgen, Year=Senior, Test=1, Class=CSCI 5801}";
         Assert.assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }
     @Test
     public void testMultipleOutput() {
-        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testMultipleCsv.csv");
+        List<Map<String, String>> actualList = testReader.read("/Users/owenratgen/Desktop/csci5801/LOAFR-Project/testFiles/testMultipleCsv.csv");
         testPrinter.printList(actualList);
         String expectedString = "{Names=Owen Ratgen, Year=Senior, Test=1, Class=CSCI 5801}\n{Names=Max Percy, Year=Senior, Test=2, Class=CSCI 5801}\n{Names=Max Percy, Year=Senior, Test=3, Class=CSCI 5801}";
         Assert.assertEquals(expectedString, outputStreamCaptor.toString().trim());
