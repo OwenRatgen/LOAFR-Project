@@ -16,6 +16,7 @@ public class ReadCsv
         Analyze analyzer = new Analyze();
         Output printer = new Output();
         //path to csv, path will be path/to/csv.csv for mac
+      
         String csvFilePath = "path\\to\\csv.csv";
         //list of maps, where each map represents a row in the csv
         List<Map<String, String>> data = readCSV(csvFilePath);
@@ -32,7 +33,6 @@ public class ReadCsv
         //will need to make these strings dynamic to allow for user input in the future
         List<Map<String, String>> filteredList = analyzer.findInstances(data, "column name", "keyword");
         printer.printList(filteredList);
-
     }
 
     //read in the csv into a list of maps
