@@ -2,11 +2,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.Normalizer;
 import java.util.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class ReadCsv
 {
@@ -15,6 +12,7 @@ public class ReadCsv
     {
         Analyze analyzer = new Analyze();
         Output printer = new Output();
+        ReadCsv reader = new ReadCsv();
         Scanner myScan = new Scanner(System.in);
         System.out.println("Please paste the path to your CSV file: ");
 
@@ -32,7 +30,7 @@ public class ReadCsv
         }
         
         //list of maps, where each map represents a row in the csv
-        List<Map<String, String>> data = read(csvFilePath);
+        List<Map<String, String>> data = reader.read(csvFilePath);
 
         List<Map<String, String>> modifiedList = data;
 
@@ -80,7 +78,7 @@ public class ReadCsv
     }
 
     //read in the csv into a list of maps
-    private static List<Map<String, String>> read(String filePath)
+    List<Map<String, String>> read(String filePath)
     {
         List<Map<String, String>> data = new ArrayList<>();
 
@@ -100,6 +98,7 @@ public class ReadCsv
                 //add each value along with its header
                 for (int i = 0; i < Math.min(headers.length, values.length); i++)
                 {
+                    headers[i] = Normalizer.normalize(headers[i], Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
                     row.put(headers[i].trim(), values[i].trim());
                 }
                 //add row to the list of maps
