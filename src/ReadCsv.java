@@ -2,35 +2,28 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-<<<<<<< HEAD
 import java.util.*;
-import java.util.stream.Collectors;
-=======
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
->>>>>>> 9eac3794c4589c90a382806fa44ac1661b3c6330
 
 public class ReadCsv
 {
 
     public static void main(String[] args)
     {
-
-<<<<<<< HEAD
         Scanner myScan = new Scanner(System.in);
         System.out.println("Please paste the path to your CSV file: ");
 
         //path to csv
         String csvFilePath = myScan.nextLine();
-=======
+        
         Analyze analyzer = new Analyze();
         Output printer = new Output();
         //path to csv, path will be path/to/csv.csv for mac
-      
         String csvFilePath = "path\\to\\csv.csv";
->>>>>>> 9eac3794c4589c90a382806fa44ac1661b3c6330
+        
         //list of maps, where each map represents a row in the csv
         List<Map<String, String>> data = read(csvFilePath);
 
@@ -38,7 +31,7 @@ public class ReadCsv
         while(true)
         {
 
-<<<<<<< HEAD
+            
             List<Map<String, String>> modifiedList = data;
 
             System.out.println("What analysis would you like to run on this file?");
@@ -79,14 +72,12 @@ public class ReadCsv
         {
             System.out.println(row);
         }
-=======
         printer.printList(data);
 
         //returns a list of the rows which have the desired keyword in the column "column name"
         //will need to make these strings dynamic to allow for user input in the future
         List<Map<String, String>> filteredList = analyzer.findInstances(data, "column name", "keyword");
         printer.printList(filteredList);
->>>>>>> 9eac3794c4589c90a382806fa44ac1661b3c6330
     }
 
     //read in the csv into a list of maps
