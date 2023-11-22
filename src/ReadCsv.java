@@ -24,7 +24,6 @@ public class ReadCsv
         {
 
             List<Map<String, String>> modifiedList = data;
-            //printList(data);
 
             System.out.println("What analysis would you like to run on this file?");
             System.out.println("Current Analysis Options:");
@@ -55,11 +54,6 @@ public class ReadCsv
                 System.out.println("*Please choose one of the listed options*");
             }
         }
-
-        //returns a list of the rows which have the desired keyword in the column "column name"
-        //will need to make these strings dynamic to allow for user input in the future
-        //List<Map<String, String>> filteredList = findInstances(data, "column name", "keyword");
-        //printList(filteredList);
 
     }
 
