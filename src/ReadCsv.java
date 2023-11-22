@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class ReadCsv
 {
 
     public static void main(String[] args)
     {
-        //path to csv
+
+        Analyze analyzer = new Analyze();
+        Output printer = new Output();
+        //path to csv, path will be path/to/csv.csv for mac
+      
         String csvFilePath = "path\\to\\csv.csv";
         //list of maps, where each map represents a row in the csv
         List<Map<String, String>> data = readCSV(csvFilePath);
@@ -24,21 +27,12 @@ public class ReadCsv
             System.out.println(row);
         }*/
 
-        //printList(data);
+        printer.printList(data);
 
         //returns a list of the rows which have the desired keyword in the column "column name"
         //will need to make these strings dynamic to allow for user input in the future
-        List<Map<String, String>> filteredList = findInstances(data, "column name", "keyword");
-        printList(filteredList);
-
-    }
-
-    private static void printList(List<Map<String, String>> list)
-    {
-        for(Map<String, String> row : list)
-        {
-            System.out.println(row);
-        }
+        List<Map<String, String>> filteredList = analyzer.findInstances(data, "column name", "keyword");
+        printer.printList(filteredList);
     }
 
     //read in the csv into a list of maps
@@ -74,13 +68,5 @@ public class ReadCsv
         }
 
         return data;
-    }
-
-    //creates a sublist which contains only the rows found using the header and keyword parameters
-    private static List<Map<String, String>> findInstances(List<Map<String, String>> data, String header, String keyword)
-    {
-        List<Map<String, String>> newList;
-        newList = data.stream().filter(map -> map.containsKey(header) && map.get(header).equals(keyword)).collect(Collectors.toList());
-        return newList;
     }
 }
