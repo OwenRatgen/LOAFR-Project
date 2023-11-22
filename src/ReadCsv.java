@@ -10,6 +10,8 @@ import java.util.Map;
 
 public class ReadCsv
 {
+    Analyze analyzer = new Analyze();
+    Output printer = new Output();
 
     public static void main(String[] args)
     {
@@ -19,8 +21,7 @@ public class ReadCsv
         //path to csv
         String csvFilePath = myScan.nextLine();
         
-        Analyze analyzer = new Analyze();
-        Output printer = new Output();
+        
         //path to csv, path will be path/to/csv.csv for mac
         String csvFilePath = "path\\to\\csv.csv";
         
@@ -50,10 +51,10 @@ public class ReadCsv
                 System.out.println("Choose the keyword/value that you're searching for in that column");
                 keyword = myScan.nextLine().toLowerCase();
 
-                modifiedList = findInstances(modifiedList, column, keyword);
+                modifiedList = analyzer.findInstances(modifiedList, column, keyword);
             }
             else if (command.equals("print")) {
-                printList(modifiedList);
+                printer.printList(modifiedList);
             }
             else if (command.equals("stop")) {
                 return;
@@ -64,20 +65,6 @@ public class ReadCsv
             }
         }
 
-    }
-
-    private static void printList(List<Map<String, String>> list)
-    {
-        for(Map<String, String> row : list)
-        {
-            System.out.println(row);
-        }
-        printer.printList(data);
-
-        //returns a list of the rows which have the desired keyword in the column "column name"
-        //will need to make these strings dynamic to allow for user input in the future
-        List<Map<String, String>> filteredList = analyzer.findInstances(data, "column name", "keyword");
-        printer.printList(filteredList);
     }
 
     //read in the csv into a list of maps
