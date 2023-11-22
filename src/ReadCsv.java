@@ -55,6 +55,7 @@ public class ReadCsv
             }
             else if (command.equals("stop") || command.equals("Stop"))
             {
+                myScan.close();
                 return;
             }
             else if (command.equals("reset") || command.equals("Reset"))
@@ -83,7 +84,6 @@ public class ReadCsv
             String line;
             while ((line = reader.readLine()) != null)
             {
-                line = line;
                 String[] values = line.split(",");
                 //hash map to represent each row
                 Map<String, String> row = new HashMap<>();
