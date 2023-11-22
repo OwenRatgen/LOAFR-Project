@@ -18,9 +18,18 @@ public class ReadCsv
         Scanner myScan = new Scanner(System.in);
         System.out.println("Please paste the path to your CSV file: ");
 
+
         //path to csv
         String csvFilePath = myScan.nextLine();
-        
+
+        int len = csvFilePath.length();
+
+        if(csvFilePath.charAt(len-1) != 'v' || csvFilePath.charAt(len-2) != 's' || csvFilePath.charAt(len-3) != 'c' ||csvFilePath.charAt(len-4) != '.' )
+        {
+            System.out.println("Please input a valid csv file");
+            myScan.close();
+            return;
+        }
         
         //list of maps, where each map represents a row in the csv
         List<Map<String, String>> data = read(csvFilePath);
