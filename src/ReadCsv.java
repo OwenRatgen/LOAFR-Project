@@ -10,20 +10,17 @@ import java.util.Map;
 
 public class ReadCsv
 {
-    Analyze analyzer = new Analyze();
-    Output printer = new Output();
 
     public static void main(String[] args)
     {
+        Analyze analyzer = new Analyze();
+        Output printer = new Output();
         Scanner myScan = new Scanner(System.in);
         System.out.println("Please paste the path to your CSV file: ");
 
         //path to csv
         String csvFilePath = myScan.nextLine();
         
-        
-        //path to csv, path will be path/to/csv.csv for mac
-        String csvFilePath = "path\\to\\csv.csv";
         
         //list of maps, where each map represents a row in the csv
         List<Map<String, String>> data = read(csvFilePath);
