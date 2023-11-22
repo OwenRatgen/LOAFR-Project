@@ -2,10 +2,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class ReadCsv
@@ -13,23 +10,56 @@ public class ReadCsv
 
     public static void main(String[] args)
     {
+
+        Scanner myScan = new Scanner(System.in);
+        System.out.println("Please paste the path to your CSV file: ");
+
         //path to csv
-        String csvFilePath = "path\\to\\csv.csv";
+        String csvFilePath = myScan.nextLine();
         //list of maps, where each map represents a row in the csv
-        List<Map<String, String>> data = readCSV(csvFilePath);
+        List<Map<String, String>> data = read(csvFilePath);
 
-        // Display the read data
-        /**for (Map<String, String> row : data)
+
+        while(true)
         {
-            System.out.println(row);
-        }*/
 
-        //printList(data);
+            List<Map<String, String>> modifiedList = data;
+            //printList(data);
+
+            System.out.println("What analysis would you like to run on this file?");
+            System.out.println("Current Analysis Options:");
+            System.out.println("1) Find Instances: *find all rows for which a specified column has a specified value");
+            System.out.println("2) To be continued...");
+            System.out.println("Type 'Print' to print the found rows");
+            System.out.println("Type 'Stop' to end the program");
+
+            String command = myScan.nextLine().toLowerCase();
+
+            if (command.equals("1") || command.equals("1) find instances") || command.equals("find instances")) {
+                String column, keyword;
+                System.out.println("Please choose the column of data that you'd like to filter");
+                column = myScan.nextLine().toLowerCase();
+                System.out.println("Choose the keyword/value that you're searching for in that column");
+                keyword = myScan.nextLine().toLowerCase();
+
+                modifiedList = findInstances(modifiedList, column, keyword);
+            }
+            else if (command.equals("print")) {
+                printList(modifiedList);
+            }
+            else if (command.equals("stop")) {
+                return;
+            }
+            else
+            {
+                System.out.println("*Please choose one of the listed options*");
+            }
+        }
 
         //returns a list of the rows which have the desired keyword in the column "column name"
         //will need to make these strings dynamic to allow for user input in the future
-        List<Map<String, String>> filteredList = findInstances(data, "column name", "keyword");
-        printList(filteredList);
+        //List<Map<String, String>> filteredList = findInstances(data, "column name", "keyword");
+        //printList(filteredList);
 
     }
 
@@ -42,7 +72,7 @@ public class ReadCsv
     }
 
     //read in the csv into a list of maps
-    private static List<Map<String, String>> readCSV(String filePath)
+    private static List<Map<String, String>> read(String filePath)
     {
         List<Map<String, String>> data = new ArrayList<>();
 
@@ -55,6 +85,7 @@ public class ReadCsv
             String line;
             while ((line = reader.readLine()) != null)
             {
+                line = line;
                 String[] values = line.split(",");
                 //hash map to represent each row
                 Map<String, String> row = new HashMap<>();
