@@ -1,4 +1,4 @@
-/**import static org.junit.Assert.assertThrows;
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -119,4 +119,4 @@ public class TestFile {
         String expectedString = "{Names=Owen Ratgen, Year=Senior, Test=1, Class=CSCI 5801}\n{Names=Max Percy, Year=Senior, Test=2, Class=CSCI 5801}\n{Names=Max Percy, Year=Senior, Test=3, Class=CSCI 5801}";
         Assert.assertEquals(expectedString, outputStreamCaptor.toString().trim());
     }
-}*/
+}
