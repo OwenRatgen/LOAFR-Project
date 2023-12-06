@@ -11,6 +11,11 @@ public class Analyze {
     {
         List<Map<String, String>> newList;
         newList = data.stream().filter(map -> map.containsKey(header) && map.get(header).equals(keyword)).collect(Collectors.toList());
+
+        System.out.println();
+        System.out.println("Found " + newList.size() + " entries that match your search");
+        System.out.println();
+
         return newList;
     }
 }
