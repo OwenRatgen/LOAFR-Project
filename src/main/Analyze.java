@@ -1,6 +1,8 @@
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Analyze {
     
@@ -17,5 +19,50 @@ public class Analyze {
         System.out.println();
 
         return newList;
+    }
+
+    //frequency analysis function. creates a hashMap that performs frequency analysis on a list of strings
+    public static Map<String, Integer> frequencyAnalysis(List<String> logEntries) {
+        Map<String, Integer> frequencyMap = new HashMap<>();
+
+        // Count the frequency of each unique string in the list
+        for (String entry : logEntries) {
+            // You may need to preprocess the entry (e.g., remove whitespace, convert to lowercase) based on your requirements
+            String cleanedEntry = entry.trim();
+
+            // Update the frequency map
+            frequencyMap.put(cleanedEntry, frequencyMap.getOrDefault(cleanedEntry, 0) + 1);
+        }
+
+        return frequencyMap;
+    }
+
+
+    //basic dependency mapping function for components of log entries
+    public static Map<String, List<String>> dependencyMapping(List<String> logEntries) {
+        Map<String, List<String>> dependencyMap = new HashMap<>();
+
+        // Parse log entries and extract dependencies
+        for (String entry : logEntries) {
+            // You need to implement a parser based on the log entry format
+            // For simplicity, let's assume entries are in the format "ComponentA depends on ComponentB"
+            String[] components = entry.split(" depends on ");
+
+            if (components.length == 2) {
+                String componentA = components[0].trim();
+                String componentB = components[1].trim();
+
+                // Update the dependency map
+                if (dependencyMap.containsKey(componentA)) {
+                    dependencyMap.get(componentA).add(componentB);
+                } else {
+                    List<String> dependencies = new ArrayList<>();
+                    dependencies.add(componentB);
+                    dependencyMap.put(componentA, dependencies);
+                }
+            }
+        }
+
+        return dependencyMap;
     }
 }
