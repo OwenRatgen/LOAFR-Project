@@ -62,8 +62,7 @@ public class RunLoafr
             //print the current working set
             else if (command.equals("print") || command.equals("Print"))
             {
-                // printer.printList(modifiedList);
-                printer.outputCsv(modifiedList);
+                printer.printList(modifiedList);
             }
             //end the program
             else if (command.equals("stop") || command.equals("Stop"))
