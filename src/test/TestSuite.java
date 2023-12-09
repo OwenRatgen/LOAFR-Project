@@ -14,6 +14,7 @@ import org.junit.runners.Suite;
          // Add more test classes if needed
 })
 
-public class TestFile {
+public class TestSuite {
     // No code here just run TestFile and it will run all the unit tests in the test package
 }
+

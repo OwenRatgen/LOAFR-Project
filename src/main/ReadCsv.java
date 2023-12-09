@@ -42,6 +42,7 @@ public class ReadCsv
         {
             System.out.println("An error occured when trying to read in the given CSV file. Message: " + e.getMessage());
             e.printStackTrace();
+            return null;
         }
 
         return data;

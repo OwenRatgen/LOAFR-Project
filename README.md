@@ -20,6 +20,9 @@ The project uses only easily available public libraries, so it is runnable on an
 Java 17. Simply open the project from the github onto your IDE (IntelliJ was used during the development process), and 
 build and run the project.
 
+# How to Run Unit Tests
+To run the unit tests in src/test/TestFile.java click run on the 
+
 # How to Use the Project
 When you first run the project, text will output asking you to paste the path to your csv file. You can either input the
 full path to the file on your computer, or you can add a csv file to the project if your IDE allows and then just input the 
