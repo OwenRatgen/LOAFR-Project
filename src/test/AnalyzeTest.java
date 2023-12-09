@@ -21,22 +21,22 @@ public class AnalyzeTest {
         // Test data
         List<Map<String, String>> testData = new ArrayList<>();
         Map<String, String> entry1 = new HashMap<>();
-        entry1.put("Header1", "Keyword");
-        entry1.put("Header2", "Value1");
+        entry1.put("Name", "Seb");
+        entry1.put("Class", "Sophomore");
         testData.add(entry1);
 
         Map<String, String> entry2 = new HashMap<>();
-        entry2.put("Header1", "Keyword");
-        entry2.put("Header2", "Value2");
+        entry2.put("Name", "Seb");
+        entry2.put("Class", "Junior");
         testData.add(entry2);
 
         Map<String, String> entry3 = new HashMap<>();
-        entry3.put("Header1", "Different");
-        entry3.put("Header2", "Value3");
+        entry3.put("Name", "Owen");
+        entry3.put("Class", "Senior");
         testData.add(entry3);
 
         // Test findInstances method
-        List<Map<String, String>> result = analyze.findInstances(testData, "Header1", "Keyword");
+        List<Map<String, String>> result = analyze.findInstances(testData, "Name", "Seb");
 
         assertEquals(2, result.size());
         assertEquals(entry1, result.get(0));
@@ -65,20 +65,22 @@ public class AnalyzeTest {
     public void testDependencyMapping() {
         // Test data
         List<String> logEntries = new ArrayList<>();
-        logEntries.add("ComponentA depends on ComponentB");
-        logEntries.add("ComponentA depends on ComponentC");
-        logEntries.add("ComponentB depends on ComponentD");
+        logEntries.add("Seb depends on Owen");
+        logEntries.add("Seb depends on Max");
+        logEntries.add("Owen depends on Malik");
 
         // Test dependencyMapping method
         Map<String, List<String>> result = Analyze.dependencyMapping(logEntries);
 
-        assertTrue(result.containsKey("ComponentA"));
-        assertTrue(result.containsKey("ComponentB"));
-        assertFalse(result.containsKey("ComponentC"));
-        assertFalse(result.containsKey("ComponentD"));
+        assertTrue(result.containsKey("Seb"));
+        assertTrue(result.containsKey("Owen"));
+        assertFalse(result.containsKey("Max"));
+        assertFalse(result.containsKey("Malik"));
 
 
-        assertEquals(2, result.get("ComponentA").size());
-        assertEquals(1, result.get("ComponentB").size());
+        assertEquals(2, result.get("Seb").size());
+        assertEquals(1, result.get("Owen").size());
     }
+
+
 }

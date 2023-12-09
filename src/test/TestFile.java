@@ -1,25 +1,19 @@
 package test;
 
-import static org.junit.Assert.assertThrows;
-import static org.junit.Assert.assertTrue;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-
-import main.ReadCsv;
-import main.Analyze; // Import Analyze class
-import main.Output; // Import Output class
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+        AnalyzeTest.class,
+        BatchQueueTest.class,
+        OptionsLoopTest.class,
+        OutputTest.class,
+        ReadCsvTest.class,
+        // RunLoafrTest.class, //This needs to be updated once RunLoafrTest is finaized
+         // Add more test classes if needed
+})
 
 public class TestFile {
-
+    // No code here just run TestFile and it will run all the unit tests in the test package
 }

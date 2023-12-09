@@ -1,4 +1,4 @@
-// package test;
+package test;
 
 // import static org.junit.Assert.*;
 
@@ -15,7 +15,7 @@
 // import main.RunLoafr;
 // import main.BatchDirectory;
 
-// public class RunLoafrTest {
+public class RunLoafrTest {
 
 //     private final RunLoafr runLoafr = new RunLoafr();
 //     private final BatchDirectory batchDirectory = new BatchDirectory();
@@ -65,4 +65,4 @@
 
 //         // You may want to add assertions based on the expected behavior
 //     }
-// }
+}
