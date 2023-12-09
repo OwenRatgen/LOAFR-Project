@@ -16,7 +16,7 @@ public class OptionsLoopTest {
 
     // Tests for input 2 and 3 are tested in seperate file because relate more to Output.java 
     // rather than Options loop so makes more sense to test elsewhere
-    
+
     @Test
     public void testAnalysisOptions_FindInstances() {
         OptionsLoop optionsLoop = new OptionsLoop();
@@ -50,11 +50,6 @@ public class OptionsLoopTest {
     private void provideInput(String data) {
         InputStream stdin = System.in;
         System.setIn(new ByteArrayInputStream(data.getBytes()));
-    }
-
-    // Helper method to restore System.in after testing user input
-    private void restoreInput() {
-        System.setIn(stdin);
     }
 
     private List<Map<String, String>> createTestData() {
