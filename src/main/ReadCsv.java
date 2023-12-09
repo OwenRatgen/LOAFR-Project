@@ -40,6 +40,7 @@ public class ReadCsv
 
         } catch (IOException e)
         {
+            System.out.println("An error occured when trying to read in the given CSV file. Message: " + e.getMessage());
             e.printStackTrace();
         }
 
@@ -48,8 +49,18 @@ public class ReadCsv
 
     public String getFileName(String filePath)
     {
-        int lastSeparatorIndex = Math.max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'));
-        String fileName = filePath.substring(lastSeparatorIndex + 1);
+        String fileName = "";
+        try {
+            int lastSeparatorIndex = Math.max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'));
+            fileName = filePath.substring(lastSeparatorIndex + 1);
+        } catch (Exception e) {
+            System.out.println("An error occured when trying to access the file name. Message: ");
+            // Checks to see if error has a message
+            if (e.getMessage() != null) {
+                System.out.println(e.getMessage());
+            }
+            e.printStackTrace();
+        }
         
         return fileName;
         
