@@ -19,10 +19,13 @@ public class Output {
         }
     }
 
-    public void outputCsv(List<Map<String, String>> list) {
+    public void outputCsv(List<Map<String, String>> list, String csvName)
+    {
         try {
-            File newCsv = new File("output.csv");
-            FileWriter writer = new FileWriter("output.csv");
+            csvName = csvName.substring(0, csvName.length()-4);
+
+            File newCsv = new File(csvName + "output.csv");
+            FileWriter writer = new FileWriter(csvName + "_output.csv");
             String headerString = "";
             
             for (String header : list.get(0).keySet()) {

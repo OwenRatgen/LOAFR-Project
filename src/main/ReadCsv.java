@@ -45,4 +45,13 @@ public class ReadCsv
 
         return data;
     }
+
+    public String getFileName(String filePath)
+    {
+        int lastSeparatorIndex = Math.max(filePath.lastIndexOf('/'), filePath.lastIndexOf('\\'));
+        String fileName = filePath.substring(lastSeparatorIndex + 1);
+        
+        return fileName;
+        
+    }
 }
