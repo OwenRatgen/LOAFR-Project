@@ -35,15 +35,14 @@ public class BatchDirectory
 
                 if (csvFiles != null && csvFiles.length > 0) 
                 {
-                    // Iterate through each CSV file and read it
                     for (File csvFile : csvFiles) {
                         System.out.println("Reading CSV file: " + csvFile.getName());
 
                         String csvPath = csvFile.getAbsolutePath();
                         List<Map<String, String>> data = reader.read(csvPath);
                         String fileName = reader.getFileName(csvPath);
+                        System.out.println();
                         looper.mainLoop(data, fileName);
-                        System.out.println("Got out of first csv");
                     }
                 } 
                 else 

@@ -23,7 +23,7 @@ public class OptionsLoop
                 System.out.println("2) Output a CSV of Current Dataset");
                 System.out.println("3) Print Current Dataset");
                 System.out.println("4) Reset to Original Dataset");
-                System.out.println("5) End Program");
+                System.out.println("5) End Program/Next File");
 
                 String command = myScan.nextLine();
 
@@ -46,7 +46,7 @@ public class OptionsLoop
                 }
                 // end the program
                 else if (command.equals("5") || command.equalsIgnoreCase("end program")) {
-                    myScan.close();
+                    //myScan.close();
                     return;
                 }
                 // error if unrecognized input is given
