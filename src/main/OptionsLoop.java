@@ -83,9 +83,11 @@ public class OptionsLoop
                 // options for the user to choose from
                 System.out.println("Choose a number from the following options:");
                 System.out.println("1) Find Instances");
-                System.out.println("2) Frequency Analysis");
-                System.out.println("3) Dependency Mapping");
-                System.out.println("4) Return to Main Options");
+                System.out.println("2) Less Than");
+                System.out.println("3) Greater Than");
+                System.out.println("4) Frequency Analysis");
+                System.out.println("5) Dependency Mapping");
+                System.out.println("6) Return to Main Options");
 
                 String command = myScan.nextLine();
 
@@ -101,15 +103,65 @@ public class OptionsLoop
 
                     modifiedList = analyzer.findInstances(modifiedList, column, keyword);
                 }
-                else if (command.equals("2") || command.equalsIgnoreCase("frequency analysis")) 
+                if (command.equals("2") || command.equalsIgnoreCase("less than")) 
+                {
+                    String column;
+                    double value;
+                    System.out.println("Please choose the column of data that you'd like to filter");
+                    column = myScan.nextLine();
+                    if (!data.get(0).containsKey(column)) 
+                    {
+                        System.out.println("Invalid column name.");
+                        return data;
+                    }
+
+                    System.out.println("What value is the maximum for the data you'd like to receive?");
+                    try 
+                    {                                        
+                        value = Double.parseDouble(myScan.nextLine());
+                    } 
+                    catch (NumberFormatException e) 
+                    {
+                        System.out.println("Invalid input for the threshold value. Please enter a numeric value.");
+                        return data;
+                    }
+
+                    modifiedList = analyzer.lessThan(modifiedList, column, value);
+                }
+                if (command.equals("3") || command.equalsIgnoreCase("greater than")) 
+                {
+                    String column;
+                    double value;
+                    System.out.println("Please choose the column of data that you'd like to filter");
+                    column = myScan.nextLine();
+                    if (!data.get(0).containsKey(column)) 
+                    {
+                        System.out.println("Invalid column name.");
+                        return data;
+                    }
+
+                    System.out.println("What value is the minimum for the data you'd like to receive?");
+                    try 
+                    {                                        
+                        value = Double.parseDouble(myScan.nextLine());
+                    } 
+                    catch (NumberFormatException e) 
+                    {
+                        System.out.println("Invalid input for the threshold value. Please enter a numeric value.");
+                        return data;
+                    }
+
+                    modifiedList = analyzer.greaterThan(modifiedList, column, value);
+                }
+                else if (command.equals("4") || command.equalsIgnoreCase("frequency analysis")) 
                 {
                     System.out.println("Assume the frequency analysis works");
                 }
-                else if (command.equals("3") || command.equalsIgnoreCase("dependency mapping")) 
+                else if (command.equals("5") || command.equalsIgnoreCase("dependency mapping")) 
                 {
                     System.out.println("Assume the dependency mapping works");
                 }
-                else if (command.equals("4") || command.equalsIgnoreCase("Return to Main Options")) 
+                else if (command.equals("6") || command.equalsIgnoreCase("Return to Main Options")) 
                 {
                     return modifiedList;
                 }

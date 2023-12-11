@@ -2,6 +2,7 @@
 
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,48 @@ public class Analyze {
         }
 
         return newList;
+    }
+
+    public List<Map<String, Object>> lessThan(List<Map<String, Object>> data, String column, double value) 
+    {
+        List<Map<String, Object>> filteredData = data.stream().filter(row -> 
+                {
+                    Object columnValue = row.get(column);
+
+                    // Check if the column value is numeric (Double)
+                    if (columnValue instanceof Double) {
+                        return (Double) columnValue < value;
+                    }
+
+                    // Handle other cases, e.g., if the column value is a String
+                    // Add more cases if needed based on the types you expect
+
+                    return false; // Default case, adjust as needed
+                })
+                .collect(Collectors.toList());
+
+        return filteredData;
+    }
+
+    public List<Map<String, Object>> greaterThan(List<Map<String, Object>> data, String column, double value) 
+    {
+        List<Map<String, Object>> filteredData = data.stream().filter(row -> 
+                {
+                    Object columnValue = row.get(column);
+
+                    // Check if the column value is numeric (Double)
+                    if (columnValue instanceof Double) {
+                        return (Double) columnValue > value;
+                    }
+
+                    // Handle other cases, e.g., if the column value is a String
+                    // Add more cases if needed based on the types you expect
+
+                    return false; // Default case, adjust as needed
+                })
+                .collect(Collectors.toList());
+
+        return filteredData;
     }
 
     //frequency analysis function. creates a hashMap that performs frequency analysis on a list of strings
