@@ -11,9 +11,9 @@ public class ReadCsv
     public ReadCsv() {}
 
     //read in the csv into a list of maps
-    public List<Map<String, String>> read(String filePath)
+    public List<Map<String, Object>> read(String filePath)
     {
-        List<Map<String, String>> data = new ArrayList<>();
+        List<Map<String, Object>> data = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath)))
         {
@@ -26,13 +26,23 @@ public class ReadCsv
             {
                 String[] values = line.split(",");
                 //hash map to represent each row
-                Map<String, String> row = new HashMap<>();
+                Map<String, Object> row = new HashMap<>();
 
                 //add each value along with its header
                 for (int i = 0; i < Math.min(headers.length, values.length); i++)
                 {
                     headers[i] = Normalizer.normalize(headers[i], Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
-                    row.put(headers[i].trim(), values[i].trim());
+                    String header = headers[i].trim();
+                    String value = values[i].trim();
+
+                    if (isNumeric(value))
+                    {
+                        row.put(header, Double.parseDouble(value));
+                    } 
+                    else 
+                    {
+                        row.put(header, value);
+                    }
                 }
                 //add row to the list of maps
                 data.add(row);
@@ -46,6 +56,19 @@ public class ReadCsv
         }
 
         return data;
+    }
+
+    private boolean isNumeric(String str) 
+    {
+        try 
+        {
+            Double.parseDouble(str);
+            return true;
+        } 
+        catch (NumberFormatException e) 
+        {
+            return false;
+        }
     }
 
     public String getFileName(String filePath)

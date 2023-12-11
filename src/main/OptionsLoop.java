@@ -6,16 +6,19 @@ import java.util.Scanner;
 
 public class OptionsLoop 
 {
-    public void mainLoop(List<Map<String, String>> data, String csvName) {
+    public void mainLoop(List<Map<String, Object>> data, String csvName) 
+    {
         Analyze analyzer = new Analyze();
         Output output = new Output();
         Scanner myScan = new Scanner(System.in);
 
         // new list of maps will be used if the user modifies anything during analysis
-        List<Map<String, String>> modifiedList = data;
+        List<Map<String, Object>> modifiedList = data;
 
-        try {
-            while (true) {
+        try 
+        {
+            while (true) 
+            {
 
                 // options for the user to choose from
                 System.out.println("What would you like to do with the current working dataset? Input a number from the list below.");
@@ -34,38 +37,45 @@ public class OptionsLoop
                     modifiedList = analysisOptions(data);
                 }
                 // print the current working set
-                else if (command.equals("2") || command.equalsIgnoreCase("Output")) {
+                else if (command.equals("2") || command.equalsIgnoreCase("Output")) 
+                {
                     output.outputCsv(modifiedList, csvName);
                 }
-                else if (command.equals("3") || command.equalsIgnoreCase("Print")) {
+                else if (command.equals("3") || command.equalsIgnoreCase("Print")) 
+                {
                     output.printList(modifiedList);
                 }
                 // change the current working set back to the full set from the csv
-                else if (command.equals("4") || command.equalsIgnoreCase("Reset")) {
+                else if (command.equals("4") || command.equalsIgnoreCase("Reset")) 
+                {
                     modifiedList = data;
                 }
                 // end the program
-                else if (command.equals("5") || command.equalsIgnoreCase("end program")) {
+                else if (command.equals("5") || command.equalsIgnoreCase("end program")) 
+                {
                     //myScan.close();
                     return;
                 }
                 // error if unrecognized input is given
-                else {
+                else 
+                {
                     System.out.println("*Please choose one of the listed options*");
                 }
             }
-        } catch (Exception e) {
+        } 
+        catch (Exception e) 
+        {
             System.out.println("An error occured when trying to run main loop. Message: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public List<Map<String, String>> analysisOptions(List<Map<String, String>> data) {
+    public List<Map<String, Object>> analysisOptions(List<Map<String, Object>> data) {
         Analyze analyzer = new Analyze();
         Scanner myScan = new Scanner(System.in);
 
         // new list of maps will be used if the user modifies anything during analysis
-        List<Map<String, String>> modifiedList = data;
+        List<Map<String, Object>> modifiedList = data;
 
         try {
             while (true) {

@@ -23,7 +23,7 @@ public class BatchDirectory
             // Check if the specified path is a directory
             if (directoryPath.toLowerCase().endsWith(".csv")) 
             {
-                List<Map<String, String>> data = reader.read(directoryPath);
+                List<Map<String, Object>> data = reader.read(directoryPath);
                 String fileName = reader.getFileName(directoryPath);
                 looper.mainLoop(data, fileName);
             } 
@@ -39,7 +39,7 @@ public class BatchDirectory
                         System.out.println("Reading CSV file: " + csvFile.getName());
 
                         String csvPath = csvFile.getAbsolutePath();
-                        List<Map<String, String>> data = reader.read(csvPath);
+                        List<Map<String, Object>> data = reader.read(csvPath);
                         String fileName = reader.getFileName(csvPath);
                         System.out.println();
                         looper.mainLoop(data, fileName);

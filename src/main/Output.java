@@ -1,5 +1,6 @@
 package main;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.io.File;
@@ -10,15 +11,15 @@ public class Output {
     
     public Output() {}
 
-    public void printList(List<Map<String, String>> list)
+    public void printList(List<Map<String, Object>> list)
     {
-        for(Map<String, String> row : list)
+        for(Map<String, Object> row : list)
         {
             System.out.println(row);
         }
     }
 
-    public void outputCsv(List<Map<String, String>> list, String csvName)
+    public void outputCsv(List<Map<String, Object>> list, String csvName)
     {
         try {
             csvName = csvName.substring(0, csvName.length()-4);
@@ -37,12 +38,14 @@ public class Output {
             headerString = headerString.substring(0, headerString.length()-1);
             writer.write(headerString + "\n");
 
+            
             // Gets each row's value and inputs it in the file
-            for (Map<String, String> row : list) {
+            for (Map<String, Object> row : list) {
                 String valueString = "";
 
-                for (String val : row.values()) {
-                    valueString += val + ",";
+                for (Object val : row.values()) {
+                    String stringValue = val.toString();
+                    valueString += stringValue + ",";
                 }
 
                 valueString = valueString.substring(0, valueString.length()-1);
