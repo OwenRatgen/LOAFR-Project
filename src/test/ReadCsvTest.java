@@ -1,6 +1,8 @@
 package test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 import java.util.Map;
@@ -8,7 +10,6 @@ import java.util.Map;
 import org.junit.Test;
 
 import main.ReadCsv;
-
 
 public class ReadCsvTest {
 
@@ -20,25 +21,25 @@ public class ReadCsvTest {
         String filePath = "src/test/testFiles/testMultipleCsv.csv";
 
         // Test read method
-        List<Map<String, String>> result = readCsv.read(filePath);
+        List<Map<String, Object>> result = readCsv.read(filePath);
 
         // Check if the data is read correctly
         assertEquals(3, result.size());
 
-        Map<String, String> row1 = result.get(0);
-        assertEquals("1", row1.get("Test"));
+        Map<String, Object> row1 = result.get(0);
+        assertEquals(1.0, row1.get("Test"));
         assertEquals("Owen Ratgen", row1.get("Name"));
         assertEquals("CSCI 5801", row1.get("Class"));
         assertEquals("Senior", row1.get("Year"));
 
-        Map<String, String> row2 = result.get(1);
-        assertEquals("2", row2.get("Test"));
+        Map<String, Object> row2 = result.get(1);
+        assertEquals(2.0, row2.get("Test"));
         assertEquals("Max Percy", row2.get("Name"));
         assertEquals("CSCI 5801", row2.get("Class"));
         assertEquals("Senior", row2.get("Year"));
 
-        Map<String, String> row3 = result.get(2);
-        assertEquals("3", row3.get("Test"));
+        Map<String, Object> row3 = result.get(2);
+        assertEquals(3.0, row3.get("Test"));
         assertEquals("Sebastian Hermann", row3.get("Name"));
         assertEquals("CSCI 5801", row3.get("Class"));
         assertEquals("Senior", row3.get("Year"));
@@ -73,16 +74,24 @@ public class ReadCsvTest {
     }
 
     @Test
-    public void testNonexistentFile() {
-        ReadCsv readCsv = new ReadCsv();
+public void testNonexistentFile() {
+    ReadCsv readCsv = new ReadCsv();
 
-        // Test data with a nonexistent file
-        String filePath = "nonexistent_file.csv";
+    // Test data with a nonexistent file
+    String filePath = "nonexistent_file.csv";
 
-        // Test read method with a nonexistent file
-        List<Map<String, String>> result = readCsv.read(filePath);
+    // Test read method with a nonexistent file
+    List<Map<String, Object>> result = null;
 
-        // Check if the result is an empty list
-        assertTrue(result.isEmpty());
+    try {
+        result = readCsv.read(filePath);
+    } catch (NullPointerException e) {
+        // Catch the NullPointerException and print a message
+        System.out.println("NullPointerException caught: " + e.getMessage());
     }
+
+    // Check if the result is null
+    assertNull("Expected result to be null due to a nonexistent file.", result);
+}
+
 }

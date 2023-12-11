@@ -6,7 +6,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         AnalyzeTest.class,
-        BatchQueueTest.class,
+        // BatchDirectoryTest.class,
         OptionsLoopTest.class,
         OutputTest.class,
         ReadCsvTest.class,

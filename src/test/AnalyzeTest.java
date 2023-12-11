@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.Assert.*;
 
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,24 +18,24 @@ public class AnalyzeTest {
         Analyze analyze = new Analyze();
 
         // Test data
-        List<Map<String, String>> testData = new ArrayList<>();
-        Map<String, String> entry1 = new HashMap<>();
+        List<Map<String, Object>> testData = new ArrayList<>();
+        Map<String, Object> entry1 = new HashMap<>();
         entry1.put("Name", "Seb");
         entry1.put("Class", "Sophomore");
         testData.add(entry1);
 
-        Map<String, String> entry2 = new HashMap<>();
+        Map<String, Object> entry2 = new HashMap<>();
         entry2.put("Name", "Seb");
         entry2.put("Class", "Junior");
         testData.add(entry2);
 
-        Map<String, String> entry3 = new HashMap<>();
+        Map<String, Object> entry3 = new HashMap<>();
         entry3.put("Name", "Owen");
         entry3.put("Class", "Senior");
         testData.add(entry3);
 
         // Test findInstances method
-        List<Map<String, String>> result = analyze.findInstances(testData, "Name", "Seb");
+        List<Map<String, Object>> result = analyze.findInstances(testData, "Name", "Seb");
 
         assertEquals(2, result.size());
         assertEquals(entry1, result.get(0));
@@ -55,10 +54,10 @@ public class AnalyzeTest {
 
         // Test frequencyAnalysis method
         Map<String, Integer> result = Analyze.frequencyAnalysis(logEntries);
-        System.out.println(result.get("Max"));
-        assertEquals(result.get("Seb"), result.get("Seb"));
-        assertEquals(result.get("Max"), result.get("Max"));
-        assertEquals(result.get("Owen"), result.get("Owen"));
+
+        assertEquals(2, result.get("Seb").intValue());
+        assertEquals(2, result.get("Max").intValue());
+        assertEquals(1, result.get("Owen").intValue());
     }
 
     @Test
@@ -77,10 +76,9 @@ public class AnalyzeTest {
         assertFalse(result.containsKey("Max"));
         assertFalse(result.containsKey("Malik"));
 
-
         assertEquals(2, result.get("Seb").size());
         assertEquals(1, result.get("Owen").size());
     }
 
-
+    // Add more test cases as needed for the newly added methods in Analyze class
 }
