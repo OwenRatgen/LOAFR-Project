@@ -38,6 +38,11 @@ to the options screen, and the working list will now only include the rows of th
 were met. At this point you can print the list to see it, or filter this list another time, or reset to the original dataset, 
 or stop the program.
 
+# How to run the script
+    Run the following command in your terminal:
+        bash script.sh <file_path> <column_name> <find_instance_data_name> <less_than_value> <greater_than_value>
+    This script will run the "Find Instances", "Less than", and "Greater than" functions then output each file the in a output CSV file
+
 # Credit
 The developers credited with creating this project are:
 - Max Percy
