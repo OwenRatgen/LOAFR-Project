@@ -5,8 +5,15 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class OptionsLoop {
+
+    /*
+     * main options loop that contains a list of the current dataset
+     * and the name of the current csv file. It lets the user print the
+     * current set, reset to the original, output to a file,
+     * and see analysis options
+     */
     public void mainLoop(List<Map<String, Object>> data, String csvName) {
-        Analyze analyzer = new Analyze();
+
         Output output = new Output();
         Scanner myScan = new Scanner(System.in);
 
@@ -14,6 +21,7 @@ public class OptionsLoop {
         List<Map<String, Object>> modifiedList = data;
 
         try {
+            // keeps looping here until user selects end program
             while (true) {
 
                 // options for the user to choose from
@@ -36,7 +44,9 @@ public class OptionsLoop {
                 // print the current working set
                 else if (command.equals("2") || command.equalsIgnoreCase("Output")) {
                     output.outputCsv(modifiedList, csvName);
-                } else if (command.equals("3") || command.equalsIgnoreCase("Print")) {
+                }
+                // print the list of current entries to terminal
+                else if (command.equals("3") || command.equalsIgnoreCase("Print")) {
                     output.printList(modifiedList);
                 }
                 // change the current working set back to the full set from the csv
@@ -47,7 +57,9 @@ public class OptionsLoop {
                 else if (command.equals("5") || command.equalsIgnoreCase("end program")) {
                     // myScan.close();
                     return;
-                } else if (command.equals("6")) {
+                }
+                // output a text file with the number of entries in the current set
+                else if (command.equals("6")) {
                     output.outputEntryCount(modifiedList, csvName);
                 }
                 // error if unrecognized input is given
@@ -61,6 +73,10 @@ public class OptionsLoop {
         }
     }
 
+    /*
+     * Allows the user to choose between all of the analysis options until they
+     * choose to go back to the main options loop
+     */
     public List<Map<String, Object>> analysisOptions(List<Map<String, Object>> data) {
         Analyze analyzer = new Analyze();
         Scanner myScan = new Scanner(System.in);
@@ -76,8 +92,8 @@ public class OptionsLoop {
                 System.out.println("1) Find Instances");
                 System.out.println("2) Less Than");
                 System.out.println("3) Greater Than");
-                System.out.println("4) Frequency Analysis");
-                System.out.println("5) Dependency Mapping");
+                System.out.println("4) Frequency Analysis*");
+                System.out.println("5) Dependency Mapping*");
                 System.out.println("6) Return to Main Options");
 
                 String command = myScan.nextLine();
@@ -92,7 +108,11 @@ public class OptionsLoop {
                     keyword = myScan.nextLine();
 
                     modifiedList = analyzer.findInstances(modifiedList, column, keyword);
-                } else if (command.equals("2") || command.equalsIgnoreCase("less than")) {
+                }
+                // calls lessThan from analyze after asking for the chosen column and the value
+                // that you
+                // want the data to be less than
+                else if (command.equals("2") || command.equalsIgnoreCase("less than")) {
                     String column;
                     double value;
                     System.out.println("Please choose the column of data that you'd like to filter");
@@ -111,7 +131,11 @@ public class OptionsLoop {
                     }
 
                     modifiedList = analyzer.lessThan(modifiedList, column, value);
-                } else if (command.equals("3") || command.equalsIgnoreCase("greater than")) {
+                }
+                // calls greaterThan from analyze after asking for the chosen column and the
+                // value that you
+                // want the data to be greater than
+                else if (command.equals("3") || command.equalsIgnoreCase("greater than")) {
                     String column;
                     double value;
                     System.out.println("Please choose the column of data that you'd like to filter");
@@ -130,11 +154,17 @@ public class OptionsLoop {
                     }
 
                     modifiedList = analyzer.greaterThan(modifiedList, column, value);
-                } else if (command.equals("4") || command.equalsIgnoreCase("frequency analysis")) {
+                }
+                // calls frequency analysis. Needs more formatting to be complete
+                else if (command.equals("4") || command.equalsIgnoreCase("frequency analysis")) {
                     System.out.println("Assume the frequency analysis works");
-                } else if (command.equals("5") || command.equalsIgnoreCase("dependency mapping")) {
+                }
+                // calls dependency mapping. Needs more formatting to be complete
+                else if (command.equals("5") || command.equalsIgnoreCase("dependency mapping")) {
                     System.out.println("Assume the dependency mapping works");
-                } else if (command.equals("6") || command.equalsIgnoreCase("Return to Main Options")) {
+                }
+                // exit analysis loop back to main options loop
+                else if (command.equals("6") || command.equalsIgnoreCase("Return to Main Options")) {
                     return modifiedList;
                 }
                 // error if wrong input

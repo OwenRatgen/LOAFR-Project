@@ -15,11 +15,13 @@ public class RunLoafr {
             // csv file or the path to csv file
             String csvFilePath = myScan.nextLine();
 
+            // go into batch directory class to handle the process
             directory.readDirectory(csvFilePath);
 
             myScan.close();
         } catch (Exception e) {
-            System.out.println("An error occured when trying to initially run loafr software. Message: " + e.getMessage());
+            System.out.println(
+                    "An error occured when trying to initially run loafr software. Message: " + e.getMessage());
             e.printStackTrace();
         }
     }
