@@ -21,7 +21,7 @@ Java 17. Simply open the project from the github onto your IDE (IntelliJ was use
 build and run the project.
 
 # How to Run Unit Tests
-To run the unit tests in src/test/TestFile.java click run on the 
+To run the unit tests in src/test/TestMain.java and run the main function Some data will be output to the terminal but if all tests pass properly you should see All tests passed: True
 
 # How to Use the Project
 When you first run the project, text will output asking you to paste the path to your csv file. You can either input the
