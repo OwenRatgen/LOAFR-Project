@@ -8,9 +8,9 @@ while true; do
     sleep 1 && 
     echo "1" && 
     sleep 1 && 
-    echo "$2" && 
+    echo "$6" && 
     sleep 1 && 
-    echo "$3" &&
+    echo "$7" &&
     sleep 1 &&
     echo "2" &&
     sleep 1 &&

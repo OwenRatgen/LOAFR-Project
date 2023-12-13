@@ -40,7 +40,7 @@ or stop the program.
 
 # How to run the script
     Run the following command in your terminal:
-        bash script.sh <file_path> <column_name> <find_instance_data_name> <less_than_value> <greater_than_value>
+        bash script.sh <file_path> <column_name_for_less_and_greater_than> <data_name_for_less_and_greater_than> <less_than_value> <greater_than_value> <column_name_for_find_instances> <column_name_for_find_instance>
     This script will run the "Find Instances", "Less than", and "Greater than" functions then output each file the in a output CSV file
 
 # Credit
