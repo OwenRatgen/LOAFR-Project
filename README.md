@@ -39,8 +39,10 @@ were met. At this point you can print the list to see it, or filter this list an
 or stop the program.
 
 # How to run the script
-    Run the following command in your terminal:
+    Run the following command in your terminal (for mac do bash script.sh, for windows do ./script.sh):
         bash script.sh <file_path> <column_name_for_less_and_greater_than> <less_than_value> <greater_than_value> <column_name_for_find_instances> <data_name_for_find_instances>
+        OR
+        ./script.sh <file_path> <column_name_for_less_and_greater_than> <less_than_value> <greater_than_value> <column_name_for_find_instances> <data_name_for_find_instances>
     This script will run the "Find Instances", "Less than", and "Greater than" functions then output each file the in a output CSV file
 
 # Credit
