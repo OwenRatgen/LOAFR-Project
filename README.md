@@ -2,21 +2,22 @@
 -for CSCI 5801 at the University of Minnesota - Twin Cities
 
 # Description
-The current version of the loafr project has limited functionality of the whole. The project is written in Java and can read
-in a logfile in the form of a CSV. This logfile is stored as a list of maps and the user has the option to perform analysis 
-on the data. Currently, the analysis which is included is a findInstances feature, which allows the user to find all of the 
-rows in the original data for which a specific value is found in the column specified by the user. The user can also print 
-to terminal either the original data or the list of maps which contains only the rows that were kept after the user's filter.
+The project is written in Java and can readin a logfile in the form of a CSV. This logfile is stored as a list of maps and 
+the user has the option to perform analysis on the data. Currently, the analyses which are included are: a findInstances 
+feature, which allows the user to find all of the rows in the original data for which a specific value is found in the 
+column specified by the user, a greaterThan feature which returns all entries that contain a value greater than the inputted
+value in the chosen column, a lessThan feature that does the same thing except for values less than the inputted value, and 
+dependency mapping and frequency analysis features that don't have a method to output yet, but will be added in the near 
+future. The user can print to terminal or output in a CSV file either the original data or the list of maps which contains 
+only the rows that were kept after the user's filtering. Loafr supports batch processing and individual manual processing.
 
-This is only a base design for this framework, and much more functionality will be added in the near future. Some upcoming
-features include:
--outputted/filtered data available in printed or file form
--batch processing so that multiple files can be uploaded and analyzed at once
--more analysis features, such as sorting, various mathematical transformations, and more filtering and searching options
+This is a start for the design for this framework, and much more functionality will be added in the future. Some 
+upcoming features will include:
+-more analysis features
 -a more intuitive user access to streamline the process
 
 # How to Install and Run
-The project uses only easily available public libraries, so it is runnable on any IDE and device which have access to 
+The project uses only easily available public libraries, so it is runnable on any device which have access to 
 Java 17. Simply open the project from the github onto your IDE (IntelliJ was used during the development process), and 
 build and run the project.
 
